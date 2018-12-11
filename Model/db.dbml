@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BASEDEDATOSPRUEBAS" Class="dbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-L2CTTVK\SQLEXPRESS;Initial Catalog=BASEDEDATOSPRUEBAS;Integrated Security=True" SettingsObjectName="Model.Properties.Settings" SettingsPropertyName="BASEDEDATOSPRUEBASConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.cliente" Member="Clientes">
+    <Type Name="Clientes">
+      <Column Name="Cuit" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RazonSocial" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Domicilio" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Tel" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Cel" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="IdLocalidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="localidad_cliente" Member="Localidades" ThisKey="IdLocalidad" OtherKey="Id" Type="Localidades" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.localidad" Member="Localidades">
+    <Type Name="Localidades">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idDepartamento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="localidad_cliente" Member="Clientes" ThisKey="Id" OtherKey="IdLocalidad" Type="Clientes" />
+      <Association Name="departamento_localidad" Member="Departamentos" ThisKey="idDepartamento" OtherKey="ID" Type="Departamentos" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.provincia" Member="Provincias">
+    <Type Name="Provincias">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IdPais" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="provincia_departamento" Member="Departamentos" ThisKey="ID" OtherKey="idProvincia" Type="Departamentos" />
+    </Type>
+  </Table>
+  <Table Name="dbo.departamento" Member="Departamentos">
+    <Type Name="Departamentos">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idProvincia" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Association Name="departamento_localidad" Member="Localidades" ThisKey="ID" OtherKey="idDepartamento" Type="Localidades" />
+      <Association Name="provincia_departamento" Member="Provincias" ThisKey="idProvincia" OtherKey="ID" Type="Provincias" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.listarPresupuestos" Method="listarPresupuestos">
+    <ElementType Name="listarPresupuestosResult">
+      <Column Name="[Número de presupuesto]" Member="Número_de_presupuesto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Vencimiento" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Cliente" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Paciente" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Medico" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="[Fecha de cirugía]" Member="Fecha_de_cirugía" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="[Fecha de Autorización]" Member="Fecha_de_Autorización" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="consumoTiene" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.obtenerCalculosAuxiliares" Method="obtenerCalculosAuxiliares">
+    <Parameter Name="idPresupuesto" Type="System.Int32" DbType="Int" />
+    <ElementType Name="obtenerCalculosAuxiliaresResult">
+      <Column Name="IdPresupuesto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PrecioCosto" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Honorario" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="GastosVarios" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Ganancia" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Subtotal" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Comentario" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.modificarCliente" Method="modificarCliente">
+    <Parameter Name="cuit" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="RazonSocial" Parameter="razonSocial" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Domicilio" Parameter="domicilio" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="tel" Type="System.String" DbType="VarChar(40)" />
+    <Parameter Name="cel" Type="System.String" DbType="VarChar(40)" />
+    <Parameter Name="email" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="idLocalidad" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ListarClientesEliminados" Method="ListarClientesEliminados">
+    <ElementType Name="ListarClientesEliminadosResult">
+      <Column Name="Cuit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="RazonSocial" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Domicilio" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Tel" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Cel" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="IdLocalidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.InsertarCliente" Method="InsertarCliente">
+    <Parameter Name="cuit" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="tel" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="cel" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="email" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="direccion" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="razonSocial" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="idLocalidad" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ExisteCuit" Method="ExisteCuit">
+    <Parameter Name="cuit" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="ExisteCuitResult">
+      <Column Name="RazonSocial" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.EliminarCliente" Method="EliminarCliente">
+    <Parameter Name="cuit" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.RecuperarCLiente" Method="RecuperarCLiente">
+    <Parameter Name="cuit" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.agregarLocalidad" Method="agregarLocalidad">
+    <Parameter Name="idDepartamento" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.modificarLocalidad" Method="modificarLocalidad">
+    <Parameter Name="idLocalidad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idDepartamento" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.listarLocalidades" Method="listarLocalidades">
+    <Parameter Name="idDepartamento" Type="System.Int32" DbType="Int" />
+    <ElementType Name="listarLocalidadesResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idDepartamento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.agregarDepartamento" Method="agregarDepartamento">
+    <Parameter Name="idProvincia" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.listarDepartamento" Method="listarDepartamento">
+    <Parameter Name="idProvincia" Type="System.Int32" DbType="Int" />
+    <ElementType Name="listarDepartamentoResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idProvincia" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.modificarDepartamento" Method="modificarDepartamento">
+    <Parameter Name="idProvincia" Type="System.Int32" DbType="Int" />
+    <Parameter Name="idDepartamento" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.agregarProvincia" Method="agregarProvincia">
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.listarProvincias" Method="listarProvincias">
+    <ElementType Name="listarProvinciasResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="IdPais" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.modificarProvincia" Method="modificarProvincia">
+    <Parameter Name="idProvincia" Type="System.Int32" DbType="Int" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ListarClienteActivos" Method="ListarClienteActivos">
+    <ElementType Name="ListarClienteActivosResult">
+      <Column Name="Cuit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="RazonSocial" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Domicilio" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Tel" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Cel" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="IdLocalidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idDepartamento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.buscarIDDepartamento" Method="buscarIDDepartamento">
+    <Parameter Name="idLocalidad" Type="System.Int32" DbType="Int" />
+    <ElementType Name="buscarIDDepartamentoResult">
+      <Column Name="idDepartamento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.buscarIDProvincia" Method="buscarIDProvincia">
+    <Parameter Name="idDepartamento" Type="System.Int32" DbType="Int" />
+    <ElementType Name="buscarIDProvinciaResult">
+      <Column Name="idProvincia" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.eliminarClienteDefinitivo" Method="eliminarClienteDefinitivo">
+    <Parameter Name="cuit" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

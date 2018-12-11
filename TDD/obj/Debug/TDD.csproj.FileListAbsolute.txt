@@ -1,0 +1,13 @@
+C:\Tesis\LAN SYSTEM\TDD\bin\Debug\TDD.dll
+C:\Tesis\LAN SYSTEM\TDD\bin\Debug\TDD.pdb
+C:\Tesis\LAN SYSTEM\TDD\bin\Debug\Castle.Core.dll
+C:\Tesis\LAN SYSTEM\TDD\bin\Debug\Model.dll
+C:\Tesis\LAN SYSTEM\TDD\bin\Debug\Moq.dll
+C:\Tesis\LAN SYSTEM\TDD\bin\Debug\Presenter.dll
+C:\Tesis\LAN SYSTEM\TDD\bin\Debug\Model.pdb
+C:\Tesis\LAN SYSTEM\TDD\bin\Debug\Presenter.pdb
+C:\Tesis\LAN SYSTEM\TDD\bin\Debug\Moq.pdb
+C:\Tesis\LAN SYSTEM\TDD\bin\Debug\Moq.xml
+C:\Tesis\LAN SYSTEM\TDD\obj\Debug\TDD.csprojResolveAssemblyReference.cache
+C:\Tesis\LAN SYSTEM\TDD\obj\Debug\TDD.dll
+C:\Tesis\LAN SYSTEM\TDD\obj\Debug\TDD.pdb

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Presentador.Localidad">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABBCAAAAAAAIQABIAABAgAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Localidad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Presentador.Cliente">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CJACRgCACCAIYAAsACAAAAAAAAAAAAAAIABAAigAAEI=</HashCode>
+      <FileName>Cliente.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="localidad" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

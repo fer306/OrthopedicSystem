@@ -1,0 +1,14 @@
+C:\Tesis\LAN SYSTEM\Vista\bin\Release\Vista.exe.config
+C:\Tesis\LAN SYSTEM\Vista\bin\Release\Vista.exe
+C:\Tesis\LAN SYSTEM\Vista\bin\Release\Vista.pdb
+C:\Tesis\LAN SYSTEM\Vista\bin\Release\Vista.xml
+C:\Tesis\LAN SYSTEM\Vista\bin\Release\MetroFramework.Design.dll
+C:\Tesis\LAN SYSTEM\Vista\bin\Release\MetroFramework.dll
+C:\Tesis\LAN SYSTEM\Vista\bin\Release\MetroFramework.Fonts.dll
+C:\Tesis\LAN SYSTEM\Vista\obj\Release\Vista.vbprojResolveAssemblyReference.cache
+C:\Tesis\LAN SYSTEM\Vista\obj\Release\Vista.frmPrincipal.resources
+C:\Tesis\LAN SYSTEM\Vista\obj\Release\Vista.Resources.resources
+C:\Tesis\LAN SYSTEM\Vista\obj\Release\Vista.vbproj.GenerateResource.Cache
+C:\Tesis\LAN SYSTEM\Vista\obj\Release\Vista.exe
+C:\Tesis\LAN SYSTEM\Vista\obj\Release\Vista.xml
+C:\Tesis\LAN SYSTEM\Vista\obj\Release\Vista.pdb

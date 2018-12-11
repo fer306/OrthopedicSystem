@@ -1,0 +1,7 @@
+C:\Tesis\LAN SYSTEM\Presenter\bin\Debug\Presenter.dll
+C:\Tesis\LAN SYSTEM\Presenter\bin\Debug\Presenter.pdb
+C:\Tesis\LAN SYSTEM\Presenter\bin\Debug\Model.dll
+C:\Tesis\LAN SYSTEM\Presenter\bin\Debug\Model.pdb
+C:\Tesis\LAN SYSTEM\Presenter\obj\Debug\Presenter.csprojResolveAssemblyReference.cache
+C:\Tesis\LAN SYSTEM\Presenter\obj\Debug\Presenter.dll
+C:\Tesis\LAN SYSTEM\Presenter\obj\Debug\Presenter.pdb

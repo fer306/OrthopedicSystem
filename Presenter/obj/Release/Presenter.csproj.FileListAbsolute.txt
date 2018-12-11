@@ -1,0 +1,7 @@
+C:\Tesis\LAN SYSTEM\Presenter\obj\Release\Presenter.csprojResolveAssemblyReference.cache
+C:\Tesis\LAN SYSTEM\Presenter\bin\Release\Presenter.dll
+C:\Tesis\LAN SYSTEM\Presenter\bin\Release\Presenter.pdb
+C:\Tesis\LAN SYSTEM\Presenter\bin\Release\Model.dll
+C:\Tesis\LAN SYSTEM\Presenter\bin\Release\Model.pdb
+C:\Tesis\LAN SYSTEM\Presenter\obj\Release\Presenter.dll
+C:\Tesis\LAN SYSTEM\Presenter\obj\Release\Presenter.pdb
